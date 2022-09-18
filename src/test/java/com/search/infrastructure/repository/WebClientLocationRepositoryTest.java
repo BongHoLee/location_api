@@ -4,7 +4,9 @@ package com.search.infrastructure.repository;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -15,13 +17,23 @@ class WebClientLocationRepositoryTest {
     @Test
     @DisplayName("카카오 API 호출 테스트")
     void 카카오_API_호출_테스트() {
-        String apiKey = "50d28f6653163fb835fe5931f9cf3ed3";
-        String host  = "https://dapi.kakao.com";
-        String auth = "KakaoAK " + apiKey;
-        String method = "/v2/local/search/keyword.json";
+        LocationGetQuery query1 = makeKakaoQueryFor("곱창");
+        LocationGetQuery query2 = makeKakaoQueryFor("갈비");
 
-        Mono<String> searchResultMono1 = kakaoWebClientRequest(host, auth, method, "곱창");
-        Mono<String> searchResultMono2 = kakaoWebClientRequest(host, auth, method, "갈비");
+        Mono<String> searchResultMono1 = clientRequest(query1);
+        Mono<String> searchResultMono2 = clientRequest(query2);
+        List<Mono<?>> resultList = Arrays.asList(searchResultMono1, searchResultMono2);
+        Object[] response = Mono.zip(resultList, result -> result).block();
+        assertThat(response).hasSize(resultList.size()).isNotNull();
+    }
+
+    @Test
+    void 네이버_API_호출_테스트() {
+        LocationGetQuery query1 = makeNaverQueryFor("곱창");
+        LocationGetQuery query2 = makeNaverQueryFor("갈비");
+
+        Mono<String> searchResultMono1 = clientRequest(query1);
+        Mono<String> searchResultMono2 = clientRequest(query2);
         List<Mono<?>> resultList = Arrays.asList(searchResultMono1, searchResultMono2);
 
         assertThat(Mono.zip(resultList, result -> result).block())
@@ -29,11 +41,99 @@ class WebClientLocationRepositoryTest {
                 .isNotNull();
     }
 
-    private Mono<String> kakaoWebClientRequest(String host, String auth, String method, String query) {
+    private Mono<String> clientRequest(LocationGetQuery locationGetQuery) {
         return WebClient.builder()
-                .baseUrl(host).build().get()
-                .uri(uriBuilder -> uriBuilder.path(method).queryParam("query", query).build())
-                .header("Authorization", auth)
+                .baseUrl(locationGetQuery.getHost()).build().get()
+                .uri(uriBuilder -> uriBuilder.path(locationGetQuery.getPath())
+                        .queryParam("query", locationGetQuery.getQuery()).build())
+                .headers(eachHeaders -> locationGetQuery.getHeaders().forEach(eachHeaders::set))
                 .exchangeToMono(response -> response.bodyToMono(String.class));
+    }
+
+    private LocationGetQuery makeKakaoQueryFor(String query) {
+        String apiKey = "50d28f6653163fb835fe5931f9cf3ed3";
+        String host = "https://dapi.kakao.com";
+        String auth = "KakaoAK " + apiKey;
+        String path = "/v2/local/search/keyword.json";
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Authorization", auth);
+
+        return new LocationGetQuery.Builder().host(host).path(path).headers(headers).query(query).build();
+    }
+
+    private LocationGetQuery makeNaverQueryFor(String query) {
+        String host = "https://openapi.naver.com";
+        String path = "/v1/search/local.json";
+        String clientId = "_8o4EDT1hTGUY4iPKU90";
+        String clientSecret = "W8zCY43K_R";
+        Map<String, String> headers = new HashMap<>();
+        headers.put("X-Naver-Client-Id", clientId);
+        headers.put("X-Naver-Client-Secret", clientSecret);
+
+        return new LocationGetQuery.Builder().host(host).path(path).headers(headers).query(query).build();
+    }
+}
+
+class LocationGetQuery {
+    private String host;
+    private String path;
+    private Map<String, String> headers;
+    private String query;
+
+    private LocationGetQuery() {
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public Map<String, String> getHeaders() {
+        return headers;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    private LocationGetQuery(Builder builder) {
+        this.host = builder.host;
+        this.headers = builder.headers;
+        this.query = builder.query;
+        this.path = builder.path;
+    }
+
+    public static class Builder {
+        private String host;
+        private Map<String, String> headers;
+        private String query;
+        private String path;
+
+        public Builder host(String host) {
+            this.host = host;
+            return this;
+        }
+
+        public Builder path(String path) {
+            this.path = path;
+            return this;
+        }
+
+        public Builder headers(Map<String, String> headers) {
+            this.headers = headers;
+            return this;
+        }
+
+        public Builder query(String query) {
+            this.query = query;
+            return this;
+        }
+
+        public LocationGetQuery build() {
+            return new LocationGetQuery(this);
+        }
     }
 }
