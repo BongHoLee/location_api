@@ -1,5 +1,5 @@
 package com.search.domain.repository;
 
-public interface LocationRepository{
+public interface LocationRepository {
 
 }

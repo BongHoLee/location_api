@@ -24,9 +24,6 @@ dependencies {
 
     implementation 'io.netty:netty-resolver-dns-native-macos:4.1.81.Final:osx-aarch_64'
 
-    // https://mvnrepository.com/artifact/it.ozimov/embedded-redis
-    implementation ('it.ozimov:embedded-redis:0.7.3') { exclude group: "org.slf4j", module: "slf4j-simple" }
-
     // redisson
     implementation 'org.redisson:redisson-spring-boot-starter:3.17.6'
 
