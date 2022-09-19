@@ -43,6 +43,7 @@ class RedissonClientTest {
 
             if (available) {
                 System.out.println(Thread.currentThread().getName() + " LOCK ACQURIED!");
+
                 Thread.sleep(500);
             } else {
                 System.out.println(Thread.currentThread().getName() + " LOCK ACQUIRE FAIL!");
