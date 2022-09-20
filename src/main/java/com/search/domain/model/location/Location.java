@@ -1,5 +1,7 @@
 package com.search.domain.model.location;
 
+import lombok.Builder;
+
 /**
  * {
  * 	"lastBuildDate":"Mon, 19 Sep 2022 22:14:06 +0900",

@@ -7,9 +7,12 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClient.RequestHeadersSpec;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
 import reactor.util.function.Tuple3;
@@ -39,9 +42,11 @@ class WebClientLocationRepositoryTest {
         Mono<String> searchResultMono2 = clientRequest(query2);
         List<Mono<String>> resultList = Arrays.asList(searchResultMono1, searchResultMono2);
 
-        Object[] response = Mono.zip(resultList, result -> result).block();
-        System.out.println(response);
-        assertThat(Mono.zip(resultList, result -> result).block())
+        System.out.println();
+        List<String> collect = resultList.stream().parallel().map(each -> each.share().block())
+                .collect(Collectors.toList());
+
+        assertThat(collect)
                 .hasSize(resultList.size())
                 .isNotNull();
     }
@@ -52,7 +57,12 @@ class WebClientLocationRepositoryTest {
                 .uri(uriBuilder -> uriBuilder.path(locationGetQuery.getPath())
                         .queryParam("query", locationGetQuery.getQuery()).build())
                 .headers(eachHeaders -> locationGetQuery.getHeaders().forEach(eachHeaders::set))
-                .exchangeToMono(response -> response.bodyToMono(String.class));
+                .retrieve()
+                .onStatus(HttpStatus::is4xxClientError, res -> res.bodyToMono(String.class).map(IllegalStateException::new))
+                .onStatus(HttpStatus::is5xxServerError, res -> res.bodyToMono(String.class).map(IllegalStateException::new))
+                .bodyToMono(String.class);
+
+
     }
 
     private LocationGetQuery makeKakaoQueryFor(String query) {
@@ -70,7 +80,8 @@ class WebClientLocationRepositoryTest {
         String host = "https://openapi.naver.com";
         String path = "/v1/search/local.json";
         String clientId = "_8o4EDT1hTGUY4iPKU90";
-        String clientSecret = "W8zCY43K_R";
+//        String clientSecret = "W8zCY43K_R";
+        String clientSecret = "W8zCY43K_";
         Map<String, String> headers = new HashMap<>();
         headers.put("X-Naver-Client-Id", clientId);
         headers.put("X-Naver-Client-Secret", clientSecret);

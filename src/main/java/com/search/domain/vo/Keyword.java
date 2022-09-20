@@ -1,4 +1,4 @@
-package com.search.domain.model.location;
+package com.search.domain.vo;
 
 import lombok.Getter;
 
