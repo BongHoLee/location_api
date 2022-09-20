@@ -27,6 +27,7 @@ dependencies {
     // redisson
     implementation 'org.redisson:redisson-spring-boot-starter:3.17.6'
 
+    implementation 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {

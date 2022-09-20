@@ -11,6 +11,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
+import reactor.util.function.Tuple2;
+import reactor.util.function.Tuple3;
 
 class WebClientLocationRepositoryTest {
 
@@ -35,7 +37,8 @@ class WebClientLocationRepositoryTest {
 
         Mono<String> searchResultMono1 = clientRequest(query1);
         Mono<String> searchResultMono2 = clientRequest(query2);
-        List<Mono<?>> resultList = Arrays.asList(searchResultMono1, searchResultMono2);
+        List<Mono<String>> resultList = Arrays.asList(searchResultMono1, searchResultMono2);
+
         Object[] response = Mono.zip(resultList, result -> result).block();
         System.out.println(response);
         assertThat(Mono.zip(resultList, result -> result).block())

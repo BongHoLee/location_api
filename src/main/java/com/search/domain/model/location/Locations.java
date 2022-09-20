@@ -1,0 +1,25 @@
+package com.search.domain.model.location;
+
+import java.util.List;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class Locations {
+    private final List<Location> locations;
+
+    public Locations(List<Location> locations) {
+        validation(locations);
+        this.locations = locations;
+    }
+
+    public void add(Locations targetLocations) {
+        locations.addAll(targetLocations.locations);
+    }
+
+    private void validation(List<Location> locations) {
+        if (locations == null) {
+            log.error("locations cannot be null");
+            throw new IllegalArgumentException("locations cannot be null");
+        }
+    }
+}
