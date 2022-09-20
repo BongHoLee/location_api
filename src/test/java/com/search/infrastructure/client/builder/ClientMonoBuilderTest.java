@@ -6,8 +6,6 @@ import com.search.infrastructure.client.builder.kakao.KakaoApiInfo;
 import com.search.infrastructure.client.builder.kakao.KakaoClientMonoBuilder;
 import com.search.infrastructure.client.builder.naver.NaverApiInfo;
 import com.search.infrastructure.client.builder.naver.NaverClientMonoBuilder;
-import java.util.HashMap;
-import java.util.Map;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Mono;
@@ -25,7 +23,7 @@ class ClientMonoBuilderTest {
         KakaoApiInfo kakaoApiInfo = kakaoApiInfo();
         ClientMonoBuilder clientMonoBuilder = new KakaoClientMonoBuilder(kakaoApiInfo);
 
-        Mono<Locations> result = clientMonoBuilder.buildFor(new Keyword("곱창"));
+        Mono<Locations> result = clientMonoBuilder.buildFor(new Keyword("제주곱창"));
 
         Locations block = result.block();
         Assertions.assertThat(block).isNotNull();
@@ -36,7 +34,7 @@ class ClientMonoBuilderTest {
         NaverApiInfo naverApiInfo = naverApiInfo();
         ClientMonoBuilder clientMonoBuilder = new NaverClientMonoBuilder(naverApiInfo);
 
-        Mono<Locations> result = clientMonoBuilder.buildFor(new Keyword("곱창"));
+        Mono<Locations> result = clientMonoBuilder.buildFor(new Keyword("제주곱창"));
 
         Locations block = result.block();
         Assertions.assertThat(block).isNotNull();
@@ -47,6 +45,7 @@ class ClientMonoBuilderTest {
                 .host("https://dapi.kakao.com")
                 .path("/v2/local/search/keyword.json")
                 .apiKey("50d28f6653163fb835fe5931f9cf3ed3")
+                .size("5")
                 .build();
     }
 

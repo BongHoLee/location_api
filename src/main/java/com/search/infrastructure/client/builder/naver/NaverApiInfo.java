@@ -1,6 +1,5 @@
 package com.search.infrastructure.client.builder.naver;
 
-import com.search.infrastructure.client.frame.ClientRequestFrame;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

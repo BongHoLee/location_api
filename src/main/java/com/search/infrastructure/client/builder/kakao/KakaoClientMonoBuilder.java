@@ -12,6 +12,7 @@ public class KakaoClientMonoBuilder extends ClientMonoBuilder {
     private static final String AUTH_PREFIX = "KakaoAK ";
     private static final String AUTH_HEADER = "Authorization";
     private static final String QUERY_KEY = "query";
+    private static final String SIZE_KEY = "size";
     private final KakaoApiInfo apiInfo;
 
     public KakaoClientMonoBuilder(KakaoApiInfo apiInfo) {
@@ -24,7 +25,9 @@ public class KakaoClientMonoBuilder extends ClientMonoBuilder {
                 .host(apiInfo.getHost())
                 .path(apiInfo.getPath())
                 .headers(Arrays.asList(new ClientRequestHeader(AUTH_HEADER, AUTH_PREFIX + apiInfo.getApiKey())))
-                .params(Arrays.asList(new ClientRequestQueryParam(QUERY_KEY, keyword.getKeyword())))
+                .params(Arrays.asList(
+                        new ClientRequestQueryParam(QUERY_KEY, keyword.getKeyword()),
+                        new ClientRequestQueryParam(SIZE_KEY, apiInfo.getSize())))
                 .build();
     }
 

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.search.domain.model.location.Address;
 import com.search.domain.model.location.Location;
 import com.search.domain.model.location.Locations;
+import com.search.domain.model.location.Source;
 import com.search.domain.model.location.Title;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,8 +35,9 @@ public class KakaoResponseBody {
 
         public Location ofLocation() {
             return new Location(
-                    new Title(placeName),
-                    new Address(addressName, roadAddressName)
+                    new Source("kakao"),
+                    new Title(placeName.replaceAll("\\<[^>]*>","")),
+                    new Address(addressName.replaceAll("\\<[^>]*>",""), roadAddressName.replaceAll("\\<[^>]*>",""))
             );
         }
     }
