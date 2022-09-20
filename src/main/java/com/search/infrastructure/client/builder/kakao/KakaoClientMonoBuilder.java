@@ -10,19 +10,20 @@ import java.util.Arrays;
 
 public class KakaoClientMonoBuilder extends ClientMonoBuilder {
     private static final String AUTH_PREFIX = "KakaoAK ";
+    private static final String AUTH_HEADER = "Authorization";
     private static final String QUERY_KEY = "query";
-    private final KakaoApiInfo kakaoApiInfo;
+    private final KakaoApiInfo apiInfo;
 
-    public KakaoClientMonoBuilder(KakaoApiInfo kakaoApiInfo) {
-        this.kakaoApiInfo = kakaoApiInfo;
+    public KakaoClientMonoBuilder(KakaoApiInfo apiInfo) {
+        this.apiInfo = apiInfo;
     }
 
     @Override
     protected ClientRequestFrame frameOf(Keyword keyword) {
         return ClientRequestFrame.builder()
-                .host(kakaoApiInfo.getHost())
-                .path(kakaoApiInfo.getPath())
-                .headers(Arrays.asList(new ClientRequestHeader(kakaoApiInfo.getAuthKey(), AUTH_PREFIX + kakaoApiInfo.getApiKey())))
+                .host(apiInfo.getHost())
+                .path(apiInfo.getPath())
+                .headers(Arrays.asList(new ClientRequestHeader(AUTH_HEADER, AUTH_PREFIX + apiInfo.getApiKey())))
                 .params(Arrays.asList(new ClientRequestQueryParam(QUERY_KEY, keyword.getKeyword())))
                 .build();
     }
