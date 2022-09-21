@@ -1,1 +1,1 @@
-GET http://localhost:8080/v1/search/location?search=여의도 재활
+GET http://localhost:8080/v1/search/location?search=곱창

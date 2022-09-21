@@ -7,7 +7,7 @@ services:
       MYSQL_DATABASE: keyword_db
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - "3307:3306"
+      - "33060:3306"
     restart: on-failure
 
   location_redis:
@@ -15,8 +15,6 @@ services:
     command: redis-server --port 6379
     ports:
       - "6379:6379"
-    expose:
-      - "6379"
     restart: on-failure
 
   location_api:
@@ -25,6 +23,8 @@ services:
       dockerfile: ./DockerFile
     ports:
       - "8080:8080"
+    expose:
+      - "8080"
     restart: on-failure
     depends_on:
       - location_redis
