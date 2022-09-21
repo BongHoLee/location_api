@@ -3,11 +3,17 @@ spring:
     host: location_redis
     port: 6379
 
-
-priorities:
-  - kakao
-  - naver
-
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://location_db:3306/keyword_db
+    username: root
+    password: root
+    hikari:
+      maximum-pool-size: 40
 
 api:
   kakao:
@@ -21,3 +27,8 @@ api:
     clientId: "_8o4EDT1hTGUY4iPKU90"
     clientSecret: "W8zCY43K_R"
     displayCount: "5"
+
+function:
+  priorities:
+    - kakao
+    - naver

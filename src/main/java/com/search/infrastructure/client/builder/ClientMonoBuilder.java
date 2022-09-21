@@ -1,7 +1,7 @@
 package com.search.infrastructure.client.builder;
 
 import com.search.domain.model.location.Locations;
-import com.search.domain.vo.Keyword;
+import com.search.domain.vo.Search;
 import com.search.infrastructure.client.frame.ClientRequestFrame;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -14,8 +14,8 @@ import reactor.core.publisher.Mono;
  */
 
 public abstract class ClientMonoBuilder {
-    public Mono<Locations> buildFor(Keyword keyword) {
-        ClientRequestFrame clientRequestFrame = frameOf(keyword);
+    public Mono<Locations> buildFor(Search search) {
+        ClientRequestFrame clientRequestFrame = frameOf(search);
         return buildMono(clientRequestFrame);
 
     }
@@ -31,7 +31,7 @@ public abstract class ClientMonoBuilder {
                 .map(this::convert);
     }
 
-    protected abstract ClientRequestFrame frameOf(Keyword keyword);
+    protected abstract ClientRequestFrame frameOf(Search search);
     protected abstract Class<?> supportType();
     protected abstract Locations convert(Object from);
 

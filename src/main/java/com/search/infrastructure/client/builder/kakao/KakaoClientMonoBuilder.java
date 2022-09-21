@@ -1,7 +1,7 @@
 package com.search.infrastructure.client.builder.kakao;
 
 import com.search.domain.model.location.Locations;
-import com.search.domain.vo.Keyword;
+import com.search.domain.vo.Search;
 import com.search.infrastructure.client.builder.ClientMonoBuilder;
 import com.search.infrastructure.client.frame.ClientRequestFrame;
 import com.search.infrastructure.client.frame.ClientRequestFrame.ClientRequestHeader;
@@ -22,13 +22,13 @@ public class KakaoClientMonoBuilder extends ClientMonoBuilder {
     }
 
     @Override
-    protected ClientRequestFrame frameOf(Keyword keyword) {
+    protected ClientRequestFrame frameOf(Search search) {
         return ClientRequestFrame.builder()
                 .host(apiInfo.getHost())
                 .path(apiInfo.getPath())
                 .headers(Arrays.asList(new ClientRequestHeader(AUTH_HEADER, AUTH_PREFIX + apiInfo.getApiKey())))
                 .params(Arrays.asList(
-                        new ClientRequestQueryParam(QUERY_KEY, keyword.getKeyword()),
+                        new ClientRequestQueryParam(QUERY_KEY, search.getSearch()),
                         new ClientRequestQueryParam(SIZE_KEY, apiInfo.getSize())))
                 .build();
     }

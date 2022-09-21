@@ -8,7 +8,6 @@ import lombok.Getter;
 @EqualsAndHashCode
 public class Source {
     private final String sourceName;
-
     public Source(String sourceName) {
         this.sourceName = sourceName;
     }

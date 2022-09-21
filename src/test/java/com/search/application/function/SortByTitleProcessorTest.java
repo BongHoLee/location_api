@@ -1,5 +1,7 @@
 package com.search.application.function;
 
+import com.search.application.location.function.Priority;
+import com.search.application.location.function.SortByTitleProcessor;
 import com.search.domain.model.location.Address;
 import com.search.domain.model.location.Location;
 import com.search.domain.model.location.Locations;

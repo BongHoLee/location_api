@@ -1,8 +1,8 @@
 package com.search.domain.repository;
 
-import com.search.domain.vo.Keyword;
+import com.search.domain.vo.Search;
 import com.search.domain.model.location.Locations;
 
 public interface LocationRepository {
-    Locations findBy(Keyword keyword);
+    Locations findBy(Search search);
 }

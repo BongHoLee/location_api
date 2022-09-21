@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Locations {
     private final List<Location> locations;
-
     public Locations(List<Location> locations) {
         validation(locations);
         this.locations = locations;
@@ -24,7 +23,6 @@ public class Locations {
     public List<Location> getLocations() {
         return this.locations;
     }
-
 
     private void validation(List<Location> locations) {
         if (locations == null) {

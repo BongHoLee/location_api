@@ -1,4 +1,4 @@
-package com.search.application.function;
+package com.search.application.location.function;
 
 import static java.util.stream.Collectors.toList;
 
@@ -32,29 +32,17 @@ public class SortByTitleProcessor implements LocationsPostProcessor {
     public Locations postProcess(final Locations originLocations) {
         List<Pair<Location, Integer>> countList = createMatchCountListByPriority(groupingBySource(originLocations));
 
-        countList.sort((beforePair, afterPair) -> {
-            if (beforePair.getSecond().compareTo(afterPair.getSecond()) != 0) {
-                return afterPair.getSecond() - beforePair.getSecond();
-            } else {
-                Location beforeLocation = beforePair.getFirst();
-                Location afterLocation = afterPair.getFirst();
-
-                return Integer.compare(
-                        priority.priorityOf(beforeLocation.getSource()),
-                        priority.priorityOf(afterLocation.getSource())
-                );
-            }
-        });
-
-        return new Locations(countList.stream().map(Pair::getFirst).limit(5).collect(toList()));
+        return sortAndExtract(countList);
     }
 
+    // Source를 기준 grouping 반환
     private Map<Source, List<Location>> groupingBySource(final Locations originLocations) {
         return originLocations.getLocations()
                 .stream()
                 .collect(Collectors.groupingBy(Location::getSource));
     }
 
+    // grouping된 항목들 대상으로 일치 항목 카운팅 로직 수행
     private List<Pair<Location, Integer>> createMatchCountListByPriority(Map<Source, List<Location>> groupingBySource) {
         List<Pair<Location, Integer>> countList = new ArrayList<>();
 
@@ -78,5 +66,24 @@ public class SortByTitleProcessor implements LocationsPostProcessor {
         }
 
         return countList;
+    }
+
+    // counting과 우선순위 기준으로 정렬 및 추출
+    private Locations sortAndExtract(List<Pair<Location, Integer>> countList) {
+        countList.sort((beforePair, afterPair) -> {
+            if (beforePair.getSecond().compareTo(afterPair.getSecond()) != 0) {
+                return afterPair.getSecond() - beforePair.getSecond();
+            } else {
+                Location beforeLocation = beforePair.getFirst();
+                Location afterLocation = afterPair.getFirst();
+
+                return Integer.compare(
+                        priority.priorityOf(beforeLocation.getSource()),
+                        priority.priorityOf(afterLocation.getSource())
+                );
+            }
+        });
+
+        return new Locations(countList.stream().map(Pair::getFirst).limit(5).collect(toList()));
     }
 }

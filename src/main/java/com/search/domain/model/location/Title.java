@@ -7,7 +7,6 @@ import lombok.Getter;
 @Getter
 public class Title {
     private final String title;
-
     public Title(String title) {
         this.title = title;
     }

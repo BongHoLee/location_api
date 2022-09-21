@@ -36,7 +36,7 @@ public class KakaoResponseBody {
         public Location ofLocation() {
             return new Location(
                     new Source("kakao"),
-                    new Title(placeName.replaceAll("\\<[^>]*>","")),
+                    new Title(placeName.replaceAll("\\<[^>]*>","").replace(" ","")),
                     new Address(addressName.replaceAll("\\<[^>]*>",""), roadAddressName.replaceAll("\\<[^>]*>",""))
             );
         }

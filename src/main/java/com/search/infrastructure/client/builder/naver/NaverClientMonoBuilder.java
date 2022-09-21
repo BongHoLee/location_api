@@ -1,7 +1,7 @@
 package com.search.infrastructure.client.builder.naver;
 
 import com.search.domain.model.location.Locations;
-import com.search.domain.vo.Keyword;
+import com.search.domain.vo.Search;
 import com.search.infrastructure.client.builder.ClientMonoBuilder;
 import com.search.infrastructure.client.frame.ClientRequestFrame;
 import com.search.infrastructure.client.frame.ClientRequestFrame.ClientRequestHeader;
@@ -22,7 +22,7 @@ public class NaverClientMonoBuilder extends ClientMonoBuilder {
     }
 
     @Override
-    protected ClientRequestFrame frameOf(Keyword keyword) {
+    protected ClientRequestFrame frameOf(Search search) {
         return ClientRequestFrame.builder()
                 .host(apiInfo.getHost())
                 .path(apiInfo.getPath())
@@ -31,7 +31,7 @@ public class NaverClientMonoBuilder extends ClientMonoBuilder {
                         new ClientRequestHeader(CLIENT_SECRET_HEADER, apiInfo.getClientSecret())
                 ))
                 .params(Arrays.asList(
-                        new ClientRequestQueryParam(QUERY_KEY, keyword.getKeyword()),
+                        new ClientRequestQueryParam(QUERY_KEY, search.getSearch()),
                         new ClientRequestQueryParam(DISPLAY_KEY, apiInfo.getDisplayCount())
                 ))
                 .build();
