@@ -1,8 +1,9 @@
-package com.search.presentation;
+package com.search.presentation.controller;
 
 import com.search.application.dto.LocationDTO;
 import com.search.domain.service.location.LocationSearchService;
 import com.search.domain.vo.Search;
+import com.search.presentation.response.LocationResponse;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ public class LocationController {
     }
 
     @GetMapping("/location")
-    public List<LocationDTO> locationSearch(@RequestParam String search) {
-         return locationSearchService.searchBy(new Search(search));
+    public LocationResponse locationSearch(@RequestParam String search) {
+         return LocationResponse.of(locationSearchService.searchBy(new Search(search)));
     }
 }
