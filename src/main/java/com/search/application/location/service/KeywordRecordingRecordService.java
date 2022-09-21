@@ -1,7 +1,7 @@
 package com.search.application.location.service;
 
 import com.search.domain.repository.KeywordRepository;
-import com.search.domain.service.KeywordService;
+import com.search.domain.service.keyword.KeywordRecordService;
 import com.search.domain.vo.Search;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class KeywordRecordingService implements KeywordService {
+public class KeywordRecordingRecordService implements KeywordRecordService {
     private final KeywordRepository keywordRepository;
 
-    public KeywordRecordingService(KeywordRepository keywordRepository) {
+    public KeywordRecordingRecordService(KeywordRepository keywordRepository) {
         this.keywordRepository = keywordRepository;
     }
 

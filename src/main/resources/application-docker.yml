@@ -32,3 +32,7 @@ function:
   priorities:
     - kakao
     - naver
+
+redisson:
+  lock:
+    key: RECORD_LOCK

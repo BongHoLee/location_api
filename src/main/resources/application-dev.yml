@@ -1,15 +1,15 @@
 spring:
   redis:
-    host: location_redis
+    host: localhost
     port: 6379
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     show-sql: true
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://location_db:3306/keyword_db
+    url: jdbc:mysql://localhost:33060/keyword_db
     username: root
     password: root
     hikari:
@@ -32,3 +32,7 @@ function:
   priorities:
     - kakao
     - naver
+
+
+lock:
+  key: RECORD_LOCK

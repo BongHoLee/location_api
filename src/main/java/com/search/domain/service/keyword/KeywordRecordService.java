@@ -1,4 +1,4 @@
-package com.search.domain.service;
+package com.search.domain.service.keyword;
 
 import com.search.domain.vo.Search;
 
@@ -8,6 +8,6 @@ import com.search.domain.vo.Search;
  * @since 2022-09-21
  */
 
-public interface KeywordService {
+public interface KeywordRecordService {
     void record(Search search);
 }

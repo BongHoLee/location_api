@@ -1,10 +1,10 @@
 package com.search.application.location.service;
 
-import com.search.application.dto.LocationDto;
+import com.search.application.dto.LocationDTO;
 import com.search.domain.model.location.Locations;
 import com.search.domain.model.location.function.LocationsPostProcessor;
 import com.search.domain.repository.LocationRepository;
-import com.search.domain.service.LocationSearchService;
+import com.search.domain.service.location.LocationSearchService;
 import com.search.domain.vo.Search;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,10 +22,10 @@ public class SortedLocationSearchSearchService implements LocationSearchService 
     }
 
     @Override
-    public List<LocationDto> searchBy(Search search) {
+    public List<LocationDTO> searchBy(Search search) {
         Locations locations = locationRepository.findBy(search);
 
         return locations.postProcessBy(postProcessor).getLocations()
-                .stream().map(LocationDto::from).collect(Collectors.toList());
+                .stream().map(LocationDTO::from).collect(Collectors.toList());
     }
 }

@@ -14,24 +14,24 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class LocationDto {
+public class LocationDTO {
     private String source;
     private String title;
     private String locationAddress;
     private String roadAddress;
 
-    public LocationDto() {
+    public LocationDTO() {
     }
 
-    public LocationDto(String source, String title, String locationAddress, String roadAddress) {
+    public LocationDTO(String source, String title, String locationAddress, String roadAddress) {
         this.source = source;
         this.title = title;
         this.locationAddress = locationAddress;
         this.roadAddress = roadAddress;
     }
 
-    public static LocationDto from(Location location) {
-        return new LocationDto(
+    public static LocationDTO from(Location location) {
+        return new LocationDTO(
                 location.getSource().getSourceName(),
                 location.getTitle().getTitle(),
                 location.getAddress().getLocationAddress(),
