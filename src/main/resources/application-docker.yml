@@ -6,7 +6,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
-    show-sql: true
+    show-sql: false
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://location_db:3306/keyword_db
@@ -33,6 +33,5 @@ function:
     - kakao
     - naver
 
-redisson:
-  lock:
-    key: RECORD_LOCK
+lock:
+  key: RECORD_LOCK

@@ -19,8 +19,6 @@ import reactor.core.publisher.Mono;
 
 class ClientMonoBuilderTest {
 
-
-
     @Test
     @DisplayName("카카오 API 호출 테스트")
     void kakaoTest() {

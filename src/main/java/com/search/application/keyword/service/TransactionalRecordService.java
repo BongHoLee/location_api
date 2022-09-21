@@ -2,14 +2,16 @@ package com.search.application.keyword.service;
 
 import com.search.domain.repository.KeywordRepository;
 import com.search.domain.vo.Search;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *  검색 기록 트랜잭션을 수행하는 기본 서비스
  */
 
-@Transactional
+@Service
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 public class TransactionalRecordService {
     private final KeywordRepository repository;
 
@@ -17,7 +19,7 @@ public class TransactionalRecordService {
         this.repository = repository;
     }
 
-    public void record(Search search) {
+    public void recording(Search search) {
         repository.save(search);
     }
 }

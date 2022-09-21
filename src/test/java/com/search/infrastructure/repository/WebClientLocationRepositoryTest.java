@@ -54,10 +54,4 @@ class WebClientLocationRepositoryTest {
                 .displayCount("5")
                 .build();
     }
-
-    @Test
-    void test() {
-        String hi = " hi hi hi";
-        System.out.println(hi.replace(" ",""));
-    }
 }
