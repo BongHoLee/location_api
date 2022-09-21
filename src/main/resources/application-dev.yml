@@ -2,3 +2,21 @@ spring:
   redis:
     host: localhost
     port: 6379
+
+api:
+  kakao:
+    host: "https://dapi.kakao.com"
+    path: "/v2/local/search/keyword.json"
+    apiKey: "50d28f6653163fb835fe5931f9cf3ed3"
+    size: "5"
+  naver:
+    host: "https://openapi.naver.com"
+    path: "/v1/search/local.json"
+    clientId: "_8o4EDT1hTGUY4iPKU90"
+    clientSecret: "W8zCY43K_R"
+    displayCount: "5"
+
+function:
+  priorities:
+    - kakao
+    - naver

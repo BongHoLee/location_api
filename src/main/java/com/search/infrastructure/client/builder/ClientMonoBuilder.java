@@ -14,7 +14,6 @@ import reactor.core.publisher.Mono;
  */
 
 public abstract class ClientMonoBuilder {
-
     public Mono<Locations> buildFor(Keyword keyword) {
         ClientRequestFrame clientRequestFrame = frameOf(keyword);
         return buildMono(clientRequestFrame);

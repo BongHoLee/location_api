@@ -7,7 +7,9 @@ import com.search.infrastructure.client.frame.ClientRequestFrame;
 import com.search.infrastructure.client.frame.ClientRequestFrame.ClientRequestHeader;
 import com.search.infrastructure.client.frame.ClientRequestFrame.ClientRequestQueryParam;
 import java.util.Arrays;
+import org.springframework.stereotype.Component;
 
+@Component
 public class KakaoClientMonoBuilder extends ClientMonoBuilder {
     private static final String AUTH_PREFIX = "KakaoAK ";
     private static final String AUTH_HEADER = "Authorization";

@@ -7,7 +7,9 @@ import com.search.infrastructure.client.frame.ClientRequestFrame;
 import com.search.infrastructure.client.frame.ClientRequestFrame.ClientRequestHeader;
 import com.search.infrastructure.client.frame.ClientRequestFrame.ClientRequestQueryParam;
 import java.util.Arrays;
+import org.springframework.stereotype.Component;
 
+@Component
 public class NaverClientMonoBuilder extends ClientMonoBuilder {
     private static final String CLIENT_ID_HEADER = "X-Naver-Client-Id";
     private static final String CLIENT_SECRET_HEADER = "X-Naver-Client-Secret";

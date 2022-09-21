@@ -2,6 +2,10 @@ package com.search.infrastructure.client.builder.kakao;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+
 
 /**
  *
@@ -9,12 +13,17 @@ import lombok.Getter;
  * @since 2022-09-20
  */
 
-@Getter
+
+@Component
+@ConfigurationProperties(prefix = "api.kakao")
+@Getter @Setter
 public class KakaoApiInfo {
-    private final String apiKey;
-    private final String host;
-    private final String path;
-    private final String size;
+    private String apiKey;
+    private String host;
+    private String path;
+    private String size;
+
+    public KakaoApiInfo(){}
 
     @Builder
     public KakaoApiInfo(String apiKey, String host, String path, String size) {

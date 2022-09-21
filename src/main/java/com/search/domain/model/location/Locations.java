@@ -1,8 +1,6 @@
 package com.search.domain.model.location;
 
-import static java.util.stream.Collectors.toList;
-
-import com.search.domain.model.location.function.LocationComparator;
+import com.search.domain.model.location.function.LocationsPostProcessor;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,9 +17,14 @@ public class Locations {
         locations.addAll(targetLocations.locations);
     }
 
-    public Locations sort(LocationComparator comparator) {
-        return new Locations(locations.stream().sorted(comparator.compare()).collect(toList()));
+    public Locations postProcessBy(LocationsPostProcessor postProcessor) {
+        return postProcessor.postProcess(this);
     }
+
+    public List<Location> getLocations() {
+        return this.locations;
+    }
+
 
     private void validation(List<Location> locations) {
         if (locations == null) {
