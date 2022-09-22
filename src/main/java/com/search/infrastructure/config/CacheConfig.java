@@ -1,4 +1,4 @@
-package com.search.application.config;
+package com.search.infrastructure.config;
 
 import java.time.Duration;
 import org.springframework.beans.factory.annotation.Value;
