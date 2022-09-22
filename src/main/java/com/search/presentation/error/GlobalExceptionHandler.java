@@ -45,7 +45,11 @@ public class GlobalExceptionHandler {
         log.error("Business Exception", e);
         final ErrorCode errorCode = e.getErrorCode();
         final ErrorResponse response = ErrorResponse.of(errorCode);
-        return new ResponseEntity<>(response, HttpStatus.valueOf(errorCode.getStatus()));
+        if (e.getErrorCode() instanceof PresentationErrorCode) {
+            return new ResponseEntity<>(response, HttpStatus.valueOf(e.getErrorCode().getStatus()));
+        } else {
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @ExceptionHandler(Exception.class)

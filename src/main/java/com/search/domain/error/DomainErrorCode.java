@@ -10,6 +10,7 @@ public enum DomainErrorCode implements ErrorCode {
 
     // KEYWORD domain
     INVALID_KEYWORD_ERROR(8010, "K001", " INVALID KEYWORD ERROR"),
+    CANNOT_SEARCH_NULL_ERROR(8011, "K001", " SEARCH KEYWORD CANNOT BE NULL"),
 
 
     // LOCATION DOMAIN

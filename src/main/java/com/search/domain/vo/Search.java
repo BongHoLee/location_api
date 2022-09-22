@@ -1,5 +1,7 @@
 package com.search.domain.vo;
 
+import com.search.domain.error.BusinessException;
+import com.search.domain.error.DomainErrorCode;
 import lombok.Getter;
 
 @Getter
@@ -12,7 +14,7 @@ public class Search {
 
     private void validation(String searchKeyword) {
         if (searchKeyword == null || searchKeyword.isEmpty()) {
-            throw new IllegalArgumentException("search keyword cannot be empty");
+            throw new BusinessException(DomainErrorCode.CANNOT_SEARCH_NULL_ERROR);
         }
     }
 }

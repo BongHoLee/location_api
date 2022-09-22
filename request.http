@@ -20,7 +20,7 @@ GET http://localhost:8080/v1/search/location?search=양고기
 GET http://localhost:8080/v1/search/location?search=양고기
 
 ###
-GET http://localhost:8080/v1/search/location
+GET http://localhost:8080/v1/search/location?search
 
 ###
 ### Send POST request with json body
