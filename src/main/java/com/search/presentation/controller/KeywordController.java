@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/v1/keyword")
+@RequestMapping("/v1/keywords")
 public class KeywordController {
 
     private final KeywordListUpService keywordListUpService;
@@ -31,7 +31,7 @@ public class KeywordController {
             @ApiResponse(responseCode = "204", description = "검색된 결과가 존재하지 않습니다."),
             @ApiResponse(responseCode = "400", description = "BAD REQUEST, 조회 실패"),
             @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR, 조회 실패")})
-    @GetMapping("/rank")
+    @GetMapping
     public KeywordResponse locationSearch() {
         List<KeywordDTO> searchResult = keywordListUpService.listUpKeywords();
         if (searchResult == null || searchResult.isEmpty()) {

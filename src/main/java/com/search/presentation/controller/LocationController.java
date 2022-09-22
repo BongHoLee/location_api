@@ -34,7 +34,7 @@ public class LocationController {
             @ApiResponse(responseCode = "204", description = "검색된 결과가 존재하지 않습니다."),
             @ApiResponse(responseCode = "400", description = "BAD REQUEST, 조회 실패"),
             @ApiResponse(responseCode = "500", description = "INTERNAL SERVER ERROR, 조회 실패")})
-    @GetMapping("/location")
+    @GetMapping("/locations")
     public LocationResponse locationSearch(@RequestParam @NotEmpty @NotBlank @NotNull String search) {
         List<LocationDTO> locationResult = locationSearchService.searchBy(new Search(search));
         if (locationResult.isEmpty()) {
