@@ -12,7 +12,8 @@ $ ./gradlew bootJar
 $ docker-compose up -d
 ```
 
-1. 저장소 root에 존재하는 request.http를 이용하여 API request를 전송합니다.
+2. `http://{HOST}:{PORT}/api-docs`접속하여 swagger 활용
+   1. ex: `http://localhost:8080/api-docs`
 
 ---
 
