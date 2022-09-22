@@ -1,21 +1,24 @@
 package com.search.presentation.error.exception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.search.domain.error.ErrorCode;
 
+/**
+ * presentation 계층에서 발생하는 예외 및 에러를 처리하기 위한 에러 코드
+ */
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum ErrorCode {
+public enum PresentationErrorCode implements ErrorCode {
 
     // Common
-    INVALID_INPUT_VALUE(400, "C001", " Invalid Input Value"),
-    METHOD_NOT_ALLOWED(405, "C002", " NOT SUPPORT HTTP METHOD"),
-    INTERNAL_SERVER_ERROR(500, "C004", "Server Error"),
-    INVALID_TYPE_VALUE(400, "C005", " Invalid Type Value"),
+    INVALID_INPUT_VALUE(400, "P001", " INVALID INPUT VALUE"),
+    METHOD_NOT_ALLOWED(405, "P002", " NOT SUPPORT HTTP METHOD"),
+    INTERNAL_SERVER_ERROR(500, "P004", "SERVER ERROR")
     ;
     private final String code;
     private final String message;
     private int status;
 
-    ErrorCode(final int status, final String code, final String message) {
+    PresentationErrorCode(final int status, final String code, final String message) {
         this.status = status;
         this.message = message;
         this.code = code;

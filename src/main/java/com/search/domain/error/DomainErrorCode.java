@@ -1,0 +1,42 @@
+package com.search.domain.error;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+/**
+ * presentation 계층에서 발생하는 예외 및 에러를 처리하기 위한 에러 코드
+ */
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+public enum DomainErrorCode implements ErrorCode {
+
+    // KEYWORD domain
+    INVALID_KEYWORD_ERROR(8010, "K001", " INVALID KEYWORD ERROR"),
+
+
+    // LOCATION DOMAIN
+    INVALID_ADDRESS_ERROR(9010, "L001", " INVALID ADDRESS ERROR"),
+    INVALID_LOCATION_ERROR(9011, "L002", " INVALID LOCATION ERROR"),
+    INVALID_TITLE_ERROR(9012, "L003", " INVALID TITLE ERROR"),
+
+    ;
+    private final String code;
+    private final String message;
+    private int status;
+
+    DomainErrorCode(final int status, final String code, final String message) {
+        this.status = status;
+        this.message = message;
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return this.message;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+}

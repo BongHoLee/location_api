@@ -1,6 +1,7 @@
 package com.search.presentation.error;
 
-import com.search.presentation.error.exception.ErrorCode;
+import com.search.domain.error.ErrorCode;
+import com.search.presentation.error.exception.PresentationErrorCode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,7 +19,7 @@ public class ErrorResponse {
     private String code;
     public  ErrorResponse(){}
 
-    private ErrorResponse(final ErrorCode code, final List<FieldError> errors) {
+    private ErrorResponse(final PresentationErrorCode code, final List<FieldError> errors) {
         this.message = code.getMessage();
         this.status = code.getStatus();
         this.errors = errors;
@@ -33,7 +34,7 @@ public class ErrorResponse {
     }
 
 
-    public static ErrorResponse of(final ErrorCode code, final BindingResult bindingResult) {
+    public static ErrorResponse of(final PresentationErrorCode code, final BindingResult bindingResult) {
         return new ErrorResponse(code, FieldError.of(bindingResult));
     }
 

@@ -1,7 +1,6 @@
 package com.search.infrastructure.entity;
 
 import com.search.domain.model.keyword.Keyword;
-import com.search.domain.vo.Search;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

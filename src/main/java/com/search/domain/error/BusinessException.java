@@ -1,7 +1,9 @@
-package com.search.presentation.error.exception;
+package com.search.domain.error;
 
+/**
+ * 비즈니스/도메인 규칙과 관련된 예외 표준
+ */
 public class BusinessException extends RuntimeException {
-
     private ErrorCode errorCode;
 
     public BusinessException(String message, ErrorCode errorCode) {

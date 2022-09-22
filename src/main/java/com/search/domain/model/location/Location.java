@@ -1,19 +1,31 @@
 package com.search.domain.model.location;
 
+import com.search.domain.error.BusinessException;
+import com.search.domain.error.DomainErrorCode;
 import java.util.Objects;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
 
+@Slf4j
 @Getter
 public class Location {
     private final Source source;
     private final Title title;
     private final Address address;
 
-    public Location(Source source,Title title, Address address) {
+    public Location(Source source, Title title, Address address) {
+        validation(source, title, address);
         this.source = source;
         this.title = title;
         this.address = address;
+    }
+
+    private void validation(Source source, Title title, Address address) {
+        if (source == null || title == null || address == null) {
+            log.error("Location arguments cannot be null");
+            throw new BusinessException(DomainErrorCode.INVALID_LOCATION_ERROR);
+        }
     }
 
     public Title getTitle() {
