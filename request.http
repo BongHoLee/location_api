@@ -1,1 +1,34 @@
 GET http://localhost:8080/v1/search/location?search=곱창
+
+###
+
+GET http://localhost:8080/v1/search/location?search=곱창
+
+###
+GET http://localhost:8080/v1/search/location?search=대창
+
+###
+GET http://localhost:8080/v1/search/location?search=곱창
+
+###
+GET http://localhost:8080/v1/search/location?search=대창
+
+###
+GET http://localhost:8080/v1/search/location?search=양고기
+
+###
+GET http://localhost:8080/v1/search/location?search=양고기
+
+###
+GET http://localhost:8080/v1/search/location
+
+###
+### Send POST request with json body
+POST http://localhost:8080/v1/search/location
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+###

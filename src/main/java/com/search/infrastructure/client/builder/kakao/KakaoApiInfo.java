@@ -7,12 +7,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 
-/**
- *
- * @author o118014_D
- * @since 2022-09-20
- */
-
 
 @Component
 @ConfigurationProperties(prefix = "api.kakao")

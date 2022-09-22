@@ -9,10 +9,6 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-/**
- * @author o118014_D
- * @since 2022-09-20
- */
 
 @Component
 @ConfigurationProperties(prefix = "api.naver")

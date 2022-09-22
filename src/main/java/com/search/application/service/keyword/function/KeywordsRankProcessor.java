@@ -1,4 +1,4 @@
-package com.search.application.keyword.function;
+package com.search.application.service.keyword.function;
 
 import static java.util.stream.Collectors.toList;
 

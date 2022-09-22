@@ -11,7 +11,6 @@ import lombok.ToString;
 public class KeywordDTO {
     private String keyword;
     private Long searchCount;
-
     public KeywordDTO(){}
 
     public KeywordDTO(String keyword, Long searchCount) {

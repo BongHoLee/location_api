@@ -15,10 +15,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author o118014_D
- * @since 2022-09-21
- */
 
 @Slf4j
 @Repository

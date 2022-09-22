@@ -7,11 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-/**
- *
- * @author o118014_D
- * @since 2022-09-20
- */
 
 public abstract class ClientMonoBuilder {
     public Mono<Locations> buildFor(Search search) {

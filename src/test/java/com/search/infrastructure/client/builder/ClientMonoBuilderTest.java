@@ -11,11 +11,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Mono;
 
-/**
- *
- * @author o118014_D
- * @since 2022-09-20
- */
 
 class ClientMonoBuilderTest {
 

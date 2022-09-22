@@ -1,4 +1,4 @@
-package com.search.application.location.function;
+package com.search.application.service.location.function;
 
 import static java.util.stream.Collectors.toList;
 
@@ -16,8 +16,6 @@ import org.springframework.stereotype.Component;
 /**
  * Title과 Priority를 기준으로 정렬하는 후처리기
  *
- * @author o118014_D
- * @since 2022-09-21
  */
 
 @Component

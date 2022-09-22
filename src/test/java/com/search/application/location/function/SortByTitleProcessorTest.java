@@ -1,7 +1,7 @@
 package com.search.application.location.function;
 
-import com.search.application.location.function.Priority;
-import com.search.application.location.function.SortByTitleProcessor;
+import com.search.application.service.location.function.Priority;
+import com.search.application.service.location.function.SortByTitleProcessor;
 import com.search.domain.model.location.Address;
 import com.search.domain.model.location.Location;
 import com.search.domain.model.location.Locations;
@@ -12,11 +12,6 @@ import java.util.Arrays;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-/**
- * @author o118014_D
- * @since 2022-09-21
- */
 
 class SortByTitleProcessorTest {
     Priority priority;

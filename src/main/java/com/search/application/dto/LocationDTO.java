@@ -5,12 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-/**
- *
- * @author o118014_D
- * @since 2022-09-21
- */
-
 @Getter
 @Setter
 @ToString
@@ -19,9 +13,7 @@ public class LocationDTO {
     private String title;
     private String locationAddress;
     private String roadAddress;
-
-    public LocationDTO() {
-    }
+    public LocationDTO() {}
 
     public LocationDTO(String source, String title, String locationAddress, String roadAddress) {
         this.source = source;

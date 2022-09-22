@@ -1,4 +1,4 @@
-package com.search.application.location.service;
+package com.search.application.service.location;
 
 import com.search.application.dto.LocationDTO;
 import com.search.domain.model.location.Locations;
@@ -16,7 +16,6 @@ public class SortedLocationSearchService implements LocationSearchService {
     private final LocationRepository locationRepository;
     private final LocationsPostProcessor postProcessor;
     private final KeywordRecordService keywordRecordService;
-
 
     public SortedLocationSearchService(
             LocationRepository locationRepository,

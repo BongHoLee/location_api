@@ -1,4 +1,4 @@
-package com.search.application.keyword.service;
+package com.search.application.service.keyword;
 
 import com.search.domain.service.keyword.KeywordRecordService;
 import com.search.domain.vo.Search;
@@ -21,7 +21,6 @@ import org.springframework.stereotype.Service;
 public class LockingKeywordRecordService implements KeywordRecordService {
     private static final int WAIT_TIME = 10;
     private static final int LEASE_TIME = 7;
-
     private final RedissonClient redissonClient;
     private final TransactionalRecordService recordService;
 

@@ -4,11 +4,6 @@ import com.search.domain.model.keyword.function.KeywordsPostProcessor;
 import java.util.List;
 import lombok.Getter;
 
-/**
- *
- * @author o118014_D
- * @since 2022-09-21
- */
 
 @Getter
 public class Keywords {

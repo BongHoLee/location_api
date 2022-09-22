@@ -3,11 +3,6 @@ package com.search.domain.model.keyword;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-/**
- *
- * @author o118014_D
- * @since 2022-09-21
- */
 
 @Getter
 @EqualsAndHashCode

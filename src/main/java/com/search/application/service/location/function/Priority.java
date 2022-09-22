@@ -1,4 +1,4 @@
-package com.search.application.location.function;
+package com.search.application.service.location.function;
 
 import com.search.domain.model.location.Source;
 import java.util.List;

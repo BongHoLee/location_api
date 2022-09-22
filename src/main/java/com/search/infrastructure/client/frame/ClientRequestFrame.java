@@ -6,12 +6,6 @@ import lombok.Getter;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
-/**
- * @author o118014_D
- * @since 2022-09-20
- */
-
-
 
 public class ClientRequestFrame {
     @Getter

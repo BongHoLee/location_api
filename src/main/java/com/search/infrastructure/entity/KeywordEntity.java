@@ -13,12 +13,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-/**
- * Class desc.
- *
- * @author o118014_D
- * @since 2022-09-21
- */
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)

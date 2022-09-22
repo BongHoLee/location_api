@@ -1,4 +1,4 @@
-package com.search.application.keyword.service;
+package com.search.application.service.keyword;
 
 import com.search.domain.repository.KeywordRepository;
 import com.search.domain.vo.Search;

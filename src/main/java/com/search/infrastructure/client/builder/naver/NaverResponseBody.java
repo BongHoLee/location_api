@@ -11,10 +11,6 @@ import java.util.stream.Collectors;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * @author o118014_D
- * @since 2022-09-20
- */
 
 @Getter
 @Setter

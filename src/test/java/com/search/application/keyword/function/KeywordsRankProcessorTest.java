@@ -2,6 +2,7 @@ package com.search.application.keyword.function;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.search.application.service.keyword.function.KeywordsRankProcessor;
 import com.search.domain.model.keyword.Keyword;
 import com.search.domain.model.keyword.Keywords;
 import java.util.ArrayList;
