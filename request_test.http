@@ -1,9 +1,8 @@
+### '곱창' 키워드로 검색
 GET http://localhost:8080/v1/search/locations?search=곱창
 
-###
-
+### '은행' 키워드로 검색
 GET http://localhost:8080/v1/search/locations?search=은행
 
-###
-
+### 최대 10개 인기 검색어 조회
 GET http://localhost:8080/v1/keywords
