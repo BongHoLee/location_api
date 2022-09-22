@@ -26,7 +26,7 @@ public class LocationDTO {
         return new LocationDTO(
                 location.getSource().getSourceName(),
                 location.getTitle().getTitle(),
-                location.getAddress().getLocationAddress(),
+                location.getAddress().getLocalAddress(),
                 location.getAddress().getRoadAddress()
         );
     }

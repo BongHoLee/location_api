@@ -2,8 +2,10 @@ package com.search.domain.vo;
 
 import com.search.domain.error.BusinessException;
 import com.search.domain.error.DomainErrorCode;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+@EqualsAndHashCode
 @Getter
 public class Search {
     private final String search;

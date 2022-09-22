@@ -10,12 +10,12 @@ import lombok.extern.slf4j.Slf4j;
 @EqualsAndHashCode
 @Getter
 public class Address {
-    private final String locationAddress;
+    private final String localAddress;
     private final String roadAddress;
 
-    public Address(String locationAddress, String roadAddress) {
-        validation(locationAddress, roadAddress);
-        this.locationAddress = locationAddress;
+    public Address(String localAddress, String roadAddress) {
+        validation(localAddress, roadAddress);
+        this.localAddress = localAddress;
         this.roadAddress = roadAddress;
     }
 

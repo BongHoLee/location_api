@@ -1,11 +1,11 @@
 package com.search.infrastructure.client.builder.naver;
 
-import com.search.domain.model.location.Locations;
 import com.search.domain.vo.Search;
 import com.search.infrastructure.client.builder.ClientMonoBuilder;
 import com.search.infrastructure.client.frame.ClientRequestFrame;
 import com.search.infrastructure.client.frame.ClientRequestFrame.ClientRequestHeader;
 import com.search.infrastructure.client.frame.ClientRequestFrame.ClientRequestQueryParam;
+import com.search.infrastructure.entity.LocationEntities;
 import java.util.Arrays;
 import org.springframework.stereotype.Component;
 
@@ -43,7 +43,7 @@ public class NaverClientMonoBuilder extends ClientMonoBuilder {
     }
 
     @Override
-    protected Locations convert(Object from) {
+    protected LocationEntities convert(Object from) {
         NaverResponseBody origin = (NaverResponseBody) from;
         return origin.ofLocations();
     }

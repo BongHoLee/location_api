@@ -1,13 +1,11 @@
 package com.search.infrastructure.client.builder.kakao;
 
+import static java.util.stream.Collectors.toList;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.search.domain.model.location.Address;
-import com.search.domain.model.location.Location;
-import com.search.domain.model.location.Locations;
-import com.search.domain.model.location.Source;
-import com.search.domain.model.location.Title;
+import com.search.infrastructure.entity.LocationEntities;
+import com.search.infrastructure.entity.LocationEntity;
 import java.util.List;
-import java.util.stream.Collectors;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,8 +14,8 @@ public class KakaoResponseBody {
     @JsonProperty("documents")
     private List<Document> documents;
 
-    public Locations ofLocations() {
-        return new Locations(documents.stream().map(Document::ofLocation).collect(Collectors.toList()));
+    public LocationEntities ofLocations() {
+        return new LocationEntities(documents.stream().map(Document::ofLocation).collect(toList()));
     }
 
     @Getter @Setter
@@ -29,12 +27,13 @@ public class KakaoResponseBody {
         @JsonProperty("road_address_name")
         private String roadAddressName;
 
-        public Location ofLocation() {
-            return new Location(
-                    new Source("kakao"),
-                    new Title(placeName.replaceAll("\\<[^>]*>","").replace(" ","")),
-                    new Address(addressName.replaceAll("\\<[^>]*>",""), roadAddressName.replaceAll("\\<[^>]*>",""))
-            );
+        public LocationEntity ofLocation() {
+            return LocationEntity.builder()
+                    .source("kakao")
+                    .title(placeName.replaceAll("\\<[^>]*>","").replace(" ",""))
+                    .localAddress(addressName.replaceAll("\\<[^>]*>",""))
+                    .roadAddress(roadAddressName.replaceAll("\\<[^>]*>",""))
+                    .build();
         }
     }
 

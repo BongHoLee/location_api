@@ -1,11 +1,11 @@
 package com.search.infrastructure.client.builder.kakao;
 
-import com.search.domain.model.location.Locations;
 import com.search.domain.vo.Search;
 import com.search.infrastructure.client.builder.ClientMonoBuilder;
 import com.search.infrastructure.client.frame.ClientRequestFrame;
 import com.search.infrastructure.client.frame.ClientRequestFrame.ClientRequestHeader;
 import com.search.infrastructure.client.frame.ClientRequestFrame.ClientRequestQueryParam;
+import com.search.infrastructure.entity.LocationEntities;
 import java.util.Arrays;
 import org.springframework.stereotype.Component;
 
@@ -39,7 +39,7 @@ public class KakaoClientMonoBuilder extends ClientMonoBuilder {
     }
 
     @Override
-    protected Locations convert(Object from) {
+    protected LocationEntities convert(Object from) {
         KakaoResponseBody origin = (KakaoResponseBody) from;
         return origin.ofLocations();
     }

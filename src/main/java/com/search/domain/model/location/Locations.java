@@ -4,7 +4,9 @@ import com.search.domain.error.BusinessException;
 import com.search.domain.error.DomainErrorCode;
 import com.search.domain.model.location.function.LocationsPostProcessor;
 import java.util.List;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
