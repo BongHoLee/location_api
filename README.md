@@ -12,8 +12,11 @@ $ ./gradlew bootJar
 $ docker-compose up -d
 ```
 
-2. `http://{HOST}:{PORT}/api-docs`접속하여 swagger 활용
-   1. ex: `http://localhost:8080/api-docs`
+
+2. 테스트
+   - root 디렉토리 하위의 request_test.http 파일  
+   - `http://{HOST}:{PORT}/api-docs`접속하여 swagger 활용
+      - ex: `http://localhost:8080/api-docs`
 
 ---
 
