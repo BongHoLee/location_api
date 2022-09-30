@@ -2,9 +2,7 @@ package com.search.domain.error;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-/**
- * presentation 계층에서 발생하는 예외 및 에러를 처리하기 위한 에러 코드
- */
+
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum DomainErrorCode implements ErrorCode {
 

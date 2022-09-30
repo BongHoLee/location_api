@@ -6,6 +6,7 @@ import com.search.infrastructure.client.builder.kakao.KakaoApiInfo;
 import com.search.infrastructure.client.builder.kakao.KakaoClientMonoBuilder;
 import com.search.infrastructure.client.builder.naver.NaverApiInfo;
 import com.search.infrastructure.client.builder.naver.NaverClientMonoBuilder;
+import com.search.infrastructure.entity.LocationEntities;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,9 +21,9 @@ class ClientMonoBuilderTest {
         KakaoApiInfo kakaoApiInfo = kakaoApiInfo();
         ClientMonoBuilder clientMonoBuilder = new KakaoClientMonoBuilder(kakaoApiInfo);
 
-        Mono<Locations> result = clientMonoBuilder.buildFor(new Search("곱창"));
+        Mono<LocationEntities> result = clientMonoBuilder.buildFor(new Search("곱창"));
 
-        Locations block = result.block();
+        LocationEntities block = result.block();
         Assertions.assertThat(block).isNotNull();
     }
 
@@ -32,9 +33,9 @@ class ClientMonoBuilderTest {
         NaverApiInfo naverApiInfo = naverApiInfo();
         ClientMonoBuilder clientMonoBuilder = new NaverClientMonoBuilder(naverApiInfo);
 
-        Mono<Locations> result = clientMonoBuilder.buildFor(new Search("곱창"));
+        Mono<LocationEntities> result = clientMonoBuilder.buildFor(new Search("곱창"));
 
-        Locations block = result.block();
+        LocationEntities block = result.block();
         Assertions.assertThat(block).isNotNull();
     }
 

@@ -11,7 +11,9 @@ import com.search.infrastructure.client.builder.kakao.KakaoClientMonoBuilder;
 import com.search.infrastructure.client.builder.naver.NaverApiInfo;
 import com.search.infrastructure.client.builder.naver.NaverClientMonoBuilder;
 import com.search.infrastructure.repository.location.ClientLocationRepository;
+import com.search.infrastructure.repository.location.LocationWebClients;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -19,18 +21,16 @@ import org.junit.jupiter.api.Test;
 
 class ClientLocationRepositoryTest {
 
-    List<ClientMonoBuilder> monoBuilders = new ArrayList<>();
-
-    @BeforeEach
-    void set() {
-        monoBuilders.add(new KakaoClientMonoBuilder(kakaoApiInfo()));
-        monoBuilders.add(new NaverClientMonoBuilder(naverApiInfo()));
-    }
+    LocationWebClients locationWebClients = new LocationWebClients(Arrays.asList(
+            new KakaoClientMonoBuilder(kakaoApiInfo()),
+       new NaverClientMonoBuilder(naverApiInfo())
+    ));
 
     @Test
     @DisplayName("Kakao, Naver API 병렬 호출 테스트")
     void client_별_요청_처리_결과_반환_테스트() {
-        ClientLocationRepository repository = new ClientLocationRepository(monoBuilders);
+
+        ClientLocationRepository repository = new ClientLocationRepository(locationWebClients);
         Locations resultLocations = repository.findBy(new Search("곱창"));
 
         assertThat(resultLocations.getLocations()).hasSize(10);
