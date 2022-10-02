@@ -29,5 +29,4 @@ public abstract class ClientMonoBuilder {
     protected abstract ClientRequestFrame frameOf(Search search);
     protected abstract Class<?> supportType();
     protected abstract LocationEntities convert(Object from);
-
 }

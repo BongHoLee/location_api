@@ -35,7 +35,6 @@ public class ClientRequestFrame {
         this.params = params;
     }
 
-
     @Getter
     public static class ClientRequestHeader {
         private final String headerKey;

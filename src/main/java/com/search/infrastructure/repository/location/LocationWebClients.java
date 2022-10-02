@@ -26,6 +26,7 @@ public class LocationWebClients {
         // WebClient 병렬 호출
         LocationEntities locationEntities = new LocationEntities(new ArrayList<>());
         clientMonoBuilders.stream()
+                .parallel()
                 .map(eachBuilder -> eachBuilder.buildFor(search))
                 .map(eachMono -> eachMono.share().block())
                 .collect(toList())
