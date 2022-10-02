@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 public class Title {
     private final String title;
     public Title(String title) {
+        validation(title);
         this.title = title;
     }
 
