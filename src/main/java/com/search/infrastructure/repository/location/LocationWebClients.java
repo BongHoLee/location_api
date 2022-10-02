@@ -28,7 +28,7 @@ public class LocationWebClients {
         clientMonoBuilders.stream()
                 .parallel()
                 .map(eachBuilder -> eachBuilder.buildFor(search))
-                .map(eachMono -> eachMono.share().block())
+                .map(eachMono ->  eachMono.share().block())
                 .collect(toList())
                 .forEach(locationEntities::add);
 
