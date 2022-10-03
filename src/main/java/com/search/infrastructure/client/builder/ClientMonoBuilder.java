@@ -23,10 +23,9 @@ public abstract class ClientMonoBuilder {
                 .onStatus(HttpStatus::is4xxClientError, res -> res.bodyToMono(String.class).map(IllegalStateException::new))
                 .onStatus(HttpStatus::is5xxServerError, res -> res.bodyToMono(String.class).map(IllegalStateException::new))
                 .bodyToMono(supportType())
-                .map(this::convert);
+                .map(LocationResponseBody::ofLocations);
     }
 
     protected abstract ClientRequestFrame frameOf(Search search);
-    protected abstract Class<?> supportType();
-    protected abstract LocationEntities convert(Object from);
+    protected abstract Class<? extends LocationResponseBody> supportType();
 }

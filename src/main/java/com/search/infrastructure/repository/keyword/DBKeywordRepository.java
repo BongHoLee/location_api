@@ -7,13 +7,8 @@ import com.search.domain.repository.KeywordRepository;
 import com.search.domain.vo.Search;
 import com.search.infrastructure.entity.KeywordEntity;
 import java.util.List;
-import java.util.Optional;
-import javax.swing.text.html.Option;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 
 @Slf4j

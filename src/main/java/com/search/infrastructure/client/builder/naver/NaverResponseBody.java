@@ -3,6 +3,7 @@ package com.search.infrastructure.client.builder.naver;
 import static java.util.stream.Collectors.toList;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.search.infrastructure.client.builder.LocationResponseBody;
 import com.search.infrastructure.entity.LocationEntities;
 import com.search.infrastructure.entity.LocationEntity;
 import java.util.List;
@@ -12,10 +13,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class NaverResponseBody {
+public class NaverResponseBody implements LocationResponseBody {
     @JsonProperty("items")
     private List<Item> items;
 
+    @Override
     public LocationEntities ofLocations() {
         return new LocationEntities(items.stream().map(Item::ofLocationEntity).collect(toList()));
     }

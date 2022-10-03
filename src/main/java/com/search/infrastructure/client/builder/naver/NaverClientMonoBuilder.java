@@ -2,6 +2,7 @@ package com.search.infrastructure.client.builder.naver;
 
 import com.search.domain.vo.Search;
 import com.search.infrastructure.client.builder.ClientMonoBuilder;
+import com.search.infrastructure.client.builder.LocationResponseBody;
 import com.search.infrastructure.client.frame.ClientRequestFrame;
 import com.search.infrastructure.client.frame.ClientRequestFrame.ClientRequestHeader;
 import com.search.infrastructure.client.frame.ClientRequestFrame.ClientRequestQueryParam;
@@ -38,15 +39,10 @@ public class NaverClientMonoBuilder extends ClientMonoBuilder {
     }
 
     @Override
-    protected Class<?> supportType() {
+    protected Class<? extends LocationResponseBody> supportType() {
         return NaverResponseBody.class;
     }
 
-    @Override
-    protected LocationEntities convert(Object from) {
-        NaverResponseBody origin = (NaverResponseBody) from;
-        return origin.ofLocations();
-    }
 }
 
 
