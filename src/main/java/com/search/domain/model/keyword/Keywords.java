@@ -14,6 +14,7 @@ public class Keywords {
     private final List<Keyword> keywords;
 
     public Keywords(List<Keyword> keywords) {
+        validation(keywords);
         this.keywords = keywords;
     }
 

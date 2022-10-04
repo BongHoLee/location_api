@@ -6,7 +6,6 @@ import com.search.infrastructure.client.builder.LocationResponseBody;
 import com.search.infrastructure.client.frame.ClientRequestFrame;
 import com.search.infrastructure.client.frame.ClientRequestFrame.ClientRequestHeader;
 import com.search.infrastructure.client.frame.ClientRequestFrame.ClientRequestQueryParam;
-import com.search.infrastructure.entity.LocationEntities;
 import java.util.Arrays;
 import org.springframework.stereotype.Component;
 
